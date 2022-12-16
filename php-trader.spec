@@ -4,13 +4,14 @@
 #
 Name     : php-trader
 Version  : 0.5.1
-Release  : 28
+Release  : 29
 URL      : https://pecl.php.net/get/trader-0.5.1.tgz
 Source0  : https://pecl.php.net/get/trader-0.5.1.tgz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause
 Requires: php-trader-lib = %{version}-%{release}
+Requires: php-trader-license = %{version}-%{release}
 BuildRequires : buildreq-php
 
 %description
@@ -19,9 +20,18 @@ No detailed description available
 %package lib
 Summary: lib components for the php-trader package.
 Group: Libraries
+Requires: php-trader-license = %{version}-%{release}
 
 %description lib
 lib components for the php-trader package.
+
+
+%package license
+Summary: license components for the php-trader package.
+Group: Default
+
+%description license
+license components for the php-trader package.
 
 
 %prep
@@ -37,6 +47,8 @@ phpize
 make  %{?_smp_mflags}
 
 %install
+mkdir -p %{buildroot}/usr/share/package-licenses/php-trader
+cp %{_builddir}/trader-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/php-trader/3b2fed2e2d47d10b8df0bcb0d498d2468bbea93c
 %make_install
 
 
@@ -45,4 +57,8 @@ make  %{?_smp_mflags}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/extensions/no-debug-non-zts-20210902/trader.so
+/usr/lib64/extensions/no-debug-non-zts-20220829/trader.so
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/php-trader/3b2fed2e2d47d10b8df0bcb0d498d2468bbea93c
