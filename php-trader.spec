@@ -7,7 +7,7 @@
 #
 Name     : php-trader
 Version  : 0.5.1
-Release  : 70
+Release  : 71
 URL      : https://pecl.php.net/get/trader-0.5.1.tgz
 Source0  : https://pecl.php.net/get/trader-0.5.1.tgz
 Summary  : No detailed summary available
